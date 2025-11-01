@@ -1,8 +1,10 @@
+# config/initializers/cors.rb
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ENV.fetch("VITE_FRONT_URL", "http://localhost:5173")
-    resource "*",
+    origins 'http://localhost:5173'  # React(Vite)側のURLに合わせる
+    resource '*',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      methods: [:get, :post, :options],
+      credentials: true
   end
 end
